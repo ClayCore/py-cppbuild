@@ -39,13 +39,13 @@ class GLFW3Builder(cm.Builder):
         # ==============================================================================================
         # Build glfw3 in target build directory
         # ==============================================================================================
-        cwd: Path = self.target_build_dir
+        cwd: Path = self.build_dir
         os.chdir(str(cwd))
 
         # ==============================================================================================
         # Run cmake to generate build configurations
         # ==============================================================================================
-        cmd = shlex.split(f'cmake ../../../vendor/{self.name}')
+        cmd = shlex.split(f'cmake ../../vendor/{self.name}')
 
         result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:

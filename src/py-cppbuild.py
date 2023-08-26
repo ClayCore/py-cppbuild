@@ -78,6 +78,8 @@ def main():
     for dep in deps.keys():
         try:
             add_builder(dep, opt, deps, root_path)
+            print(
+                f'{colorama.Fore.GREEN}[INFO]: {colorama.Fore.RESET}build succesful for \'{dep}\'')
         except RuntimeError as re:
             print(
                 f'{colorama.Fore.RED}RuntimeError caught: {colorama.Style.BRIGHT}{colorama.Fore.BLUE}{re}{colorama.Style.RESET_ALL}\n', file=sys.stderr)

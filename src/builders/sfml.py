@@ -46,7 +46,7 @@ class SFMLBuilder(cm.Builder):
         # Run cmake to generate build configurations
         # ==============================================================================================
         cmd = shlex.split(
-            f'cmake ../../../vendor/{self.name} -DCMAKE_BUILD_TYPE=Release')
+            f'cmake ../../vendor/{self.name} -DCMAKE_BUILD_TYPE=Release')
 
         result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:

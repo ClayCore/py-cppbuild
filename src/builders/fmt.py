@@ -47,7 +47,7 @@ class FMTBuilder(cm.Builder):
         # ==============================================================================================
         # Run cmake
         # ==============================================================================================
-        cmd = shlex.split(f'cmake ../../../vendor/{self.name}')
+        cmd = shlex.split(f'cmake ../../vendor/{self.name}')
 
         result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:

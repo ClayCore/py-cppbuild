@@ -65,7 +65,7 @@ class GLFW3Builder(cm.Builder):
         # ==============================================================================================
         # Copy built library
         # ==============================================================================================
-        lib_path: Path = self.target_build_dir / 'src' / 'Release'
+        lib_path: Path = self.build_dir / 'src' / 'Release'
         glfw_lib_path: Path = lib_path / 'glfw3.lib'
 
         result = self.copy_libs([glfw_lib_path])

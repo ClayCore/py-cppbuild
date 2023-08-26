@@ -67,7 +67,7 @@ class FMTBuilder(cm.Builder):
         # ==============================================================================================
         # Copy built libraries
         # ==============================================================================================
-        lib_path: Path = self.target_build_dir / 'Release' / 'fmt.lib'
+        lib_path: Path = self.build_dir / 'Release' / 'fmt.lib'
 
         result = self.copy_libs([lib_path])
         if result.error != cm.Error.SUCCESS:

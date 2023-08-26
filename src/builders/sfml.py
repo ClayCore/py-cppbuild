@@ -66,7 +66,7 @@ class SFMLBuilder(cm.Builder):
         # ==============================================================================================
         # Copy built library
         # ==============================================================================================
-        lib_path: Path = self.target_build_dir / 'lib' / 'Release'
+        lib_path: Path = self.build_dir / 'lib' / 'Release'
         sfml_audio_lib: Path = lib_path / 'sfml-audio.lib'
         sfml_graphics_lib: Path = lib_path / 'sfml-graphics.lib'
         sfml_main_lib: Path = lib_path / 'sfml-main.lib'

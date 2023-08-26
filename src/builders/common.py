@@ -133,7 +133,7 @@ class Builder():
             return Result(Error.ARGUMENT, msg)
 
         files = []
-        for path in self.target_build_dir.glob('*'):
+        for path in self.build_dir.glob('*'):
             for ignored in ignore:
                 if str(path) != str(ignored):
                     files.append(str(path))

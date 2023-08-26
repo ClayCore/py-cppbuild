@@ -4,6 +4,8 @@ from . import common as cm
 import os
 import shlex
 
+from colorama import Fore
+
 
 class BGFXBuilder(cm.Builder):
     def __init__(self, root_path: Path, deps: dict):
@@ -31,9 +33,36 @@ class BGFXBuilder(cm.Builder):
         bimg_exists = self.deps['bimg'].exists()
         bx_exists = self.deps['bx'].exists()
 
+        # ==============================================================================================
+        # Copy their include directories into the deps folder
+        # ==============================================================================================
         if (not bimg_exists) or (not bx_exists):
             msg = '[BGFX]: bimg and bx must be present for build'
             return cm.Result(cm.Error.LINKED_DEP_NOT_FOUND, msg)
+        else:
+            include_dir = self.deps['bimg'].include_dir
+            tgt_include_dir = self.deps['bimg'].target_include_dir
+
+            if not tgt_include_dir.exists():
+                tgt_include_dir.mkdir(parents=True)
+
+            cm.Builder.copytree(include_dir, tgt_include_dir)
+            if not tgt_include_dir.exists():
+                msg = f'{Fore.RED}[ERROR]: {Fore.RESET}' \
+                      f'failed to transact copy from \'{str(include_dir)}\' to \'{str(tgt_include_dir)}\''
+                return cm.Result(cm.Error.FILE_COPY_FAILED, msg)
+
+            include_dir = self.deps['bx'].include_dir
+            tgt_include_dir = self.deps['bx'].target_include_dir
+
+            if not tgt_include_dir.exists():
+                tgt_include_dir.mkdir(parents=True)
+
+            cm.Builder.copytree(include_dir, tgt_include_dir)
+            if not tgt_include_dir.exists():
+                msg = f'{Fore.RED}[ERROR]: {Fore.RESET}' \
+                      f'failed to transact copy from \'{str(include_dir)}\' to \'{str(tgt_include_dir)}\''
+                return cm.Result(cm.Error.FILE_COPY_FAILED, msg)
 
         # ==============================================================================================
         # Save current cwd

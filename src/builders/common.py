@@ -135,11 +135,11 @@ class Builder():
         files = []
         for path in self.target_build_dir.glob('*'):
             for ignored in ignore:
-                if path != str(ignored):
+                if str(path) != str(ignored):
                     files.append(str(path))
 
         for path in files:
-            if os.path.isfile(path) and not path.endswith(('.lib', '.a', '.so')):
+            if os.path.isfile(path) and (not path.endswith(('.lib', '.a', '.so'))):
                 _ = Path(path).unlink()
             if os.path.isdir(path):
                 shutil.rmtree(path)

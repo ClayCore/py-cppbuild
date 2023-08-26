@@ -1,0 +1,9 @@
+# VSCode settings
+/.vscode
+
+# Extensions caches
+/.cache
+
+# Python tooling
+/tools/builder/__pycache__/
+*.pyc

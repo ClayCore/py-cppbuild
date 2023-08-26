@@ -45,7 +45,7 @@ class GLFW3Builder(cm.Builder):
         # ==============================================================================================
         # Run cmake to generate build configurations
         # ==============================================================================================
-        cmd = shlex.split(f'cmake ../../vendor/{self.name}')
+        cmd = shlex.split(f'cmake ../../../vendor/{self.name}')
 
         result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:

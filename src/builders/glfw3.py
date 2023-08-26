@@ -47,7 +47,7 @@ class GLFW3Builder(cm.Builder):
         # ==============================================================================================
         cmd = shlex.split(f'cmake ../../vendor/{self.name}')
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 
@@ -58,7 +58,7 @@ class GLFW3Builder(cm.Builder):
         cmd = ['msbuild', 'GLFW.sln', '/t:GLFW3\\glfw', '/clp:ErrorsOnly',
                '/p:Configuration=Release', '/p:Platform=x64']
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 

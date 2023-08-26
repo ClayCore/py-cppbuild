@@ -48,7 +48,7 @@ class SFMLBuilder(cm.Builder):
         cmd = shlex.split(
             f'cmake ../../../vendor/{self.name} -DCMAKE_BUILD_TYPE=Release')
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 
@@ -59,7 +59,7 @@ class SFMLBuilder(cm.Builder):
         cmd = ['msbuild', 'SFML.sln', '/clp:ErrorsOnly',
                '/t:CMake\\ALL_BUILD', '/p:Configuration=Release', '/p:Platform=x64']
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 

@@ -49,7 +49,7 @@ class FMTBuilder(cm.Builder):
         # ==============================================================================================
         cmd = shlex.split(f'cmake ../../vendor/{self.name}')
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 
@@ -60,7 +60,7 @@ class FMTBuilder(cm.Builder):
         cmd = shlex.split(
             'msbuild FMT.sln /t:fmt /clp:ErrorsOnly /p:Configuration="Release" /p:Platform="x64"')
 
-        result = self.run_and_capture(self, cmd)
+        result = self.run_and_capture(cmd)
         if result.error != cm.Error.SUCCESS:
             return result
 
